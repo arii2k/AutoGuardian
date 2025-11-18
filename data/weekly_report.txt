@@ -1,0 +1,7 @@
+Report generated: 2025-10-19T23:40:58.860380
+Total scans: 3
+High/quarantined: 3
+
+- Fri, 17 Oct 2025 08:04:53 -0600 | Banka Raiffeisen <news@sf.email.raiffeisen-kosovo.com> | Raiffeisen Bank Kosovo Mobile: Shkarko versionin më të fundit! | score=3 | quarantine=True
+- Fri, 17 Oct 2025 18:27:08 +0200 | "zaposli.me" <noreply@zaposli.me> | Novi poslovi na Zaposli.ME - 2025-10-17 | score=3 | quarantine=True
+- Thu, 16 Oct 2025 18:19:45 GMT | Google <no-reply@accounts.google.com> | Your Google Account was recovered successfully | score=17 | quarantine=True

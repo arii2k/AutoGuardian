@@ -1,0 +1,15 @@
+{
+  "timestamp": "2025-10-17T12:21:54.415226",
+  "email": {
+    "Date": "Thu, 16 Oct 2025 18:19:45 GMT",
+    "Subject": "Your Google Account was recovered successfully",
+    "From": "Google <no-reply@accounts.google.com>",
+    "id": "199ee3fdd9c0a7f2"
+  },
+  "score": 30,
+  "matched_rules": [
+    "Urgent language in subject",
+    "\u26a0 Similar to 202 known phishing attempts"
+  ],
+  "memory_alert": true
+}

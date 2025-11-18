@@ -1,0 +1,90 @@
+# services/scanner.py
+import re
+import json
+from datetime import datetime
+import os
+from services.memory_service import find_similar, add_to_memory
+
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+DATA_DIR = os.path.join(BASE_DIR, "data")
+RULES_DEFAULT = os.path.join(DATA_DIR, "rules.json")
+COMMUNITY_DEFAULT = os.path.join(DATA_DIR, "community_memory.json")
+
+def _load_json(path):
+    try:
+        with open(path, encoding="utf-8-sig") as f:
+            return json.load(f)
+    except FileNotFoundError:
+        return []
+    except Exception:
+        return []
+
+def scan_emails(emails, rules_file=None, community_file=None):
+    if rules_file is None:
+        rules_file = RULES_DEFAULT
+    if community_file is None:
+        community_file = COMMUNITY_DEFAULT
+
+    rules = _load_json(rules_file)
+    community_memory = _load_json(community_file)
+
+    results = []
+    for email_obj in emails:
+        content = f"{email_obj.get('Subject', '')} {email_obj.get('From', '')}"
+        score = 0
+        matched_rules = []
+        memory_alert = None
+        community_alert = None
+        quarantine = False
+
+        # Apply rules
+        for rule in rules:
+            patterns = rule.get('patterns', [])
+            if not patterns and rule.get("pattern"):
+                patterns = [rule["pattern"]]
+            for pattern in patterns:
+                try:
+                    if re.search(pattern, content, re.IGNORECASE):
+                        matched_rules.append(rule.get('description', rule.get('name', 'Unknown')))
+                        score += rule.get('score', 1)
+                except re.error:
+                    # invalid regex, fallback to simple substring
+                    if pattern.lower() in content.lower():
+                        matched_rules.append(rule.get('description', rule.get('name', 'Unknown')))
+                        score += rule.get('score', 1)
+
+        # Memory alerts
+        similar = find_similar(email_obj)
+        if similar:
+            memory_alert = similar[0]["email"].get("Subject")
+            score += 1
+            quarantine = True
+
+        # Community alerts
+        signature = f"{email_obj.get('From', '')}|{email_obj.get('Subject', '')}"
+        for c in community_memory:
+            if c.get("signature") == signature:
+                community_alert = "Known threat from community"
+                if c.get("quarantine", False):
+                    quarantine = True
+                score += 1
+                break
+
+        # Auto-quarantine based on score
+        if score >= 5:
+            quarantine = True
+
+        # Add to memory
+        add_to_memory(email_obj)
+
+        results.append({
+            "timestamp": datetime.utcnow().isoformat(),
+            "email": email_obj,
+            "score": score,
+            "matched_rules": matched_rules,
+            "memory_alert": memory_alert,
+            "community_alert": community_alert,
+            "quarantine": quarantine
+        })
+
+    return results

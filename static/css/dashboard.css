@@ -1,0 +1,169 @@
+/* AutoGuardian Dashboard - Modern Dark Theme */
+:root {
+  --bg: #0f172a;
+  --card: #1e293b;
+  --text: #e2e8f0;
+  --muted: #94a3b8;
+  --accent: #3b82f6;
+  --danger: #ef4444;
+  --warn: #eab308;
+  --success: #22c55e;
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+}
+
+/* Header */
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 28px;
+  background: #1e293b;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+}
+.brand {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #fff;
+}
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.sub-status.active { color: var(--success); }
+.sub-status.inactive { color: var(--warn); }
+.btn {
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s;
+}
+.btn:hover { background: #2563eb; }
+.btn.small { font-size: 0.9rem; padding: 6px 10px; }
+.btn.outline {
+  background: transparent;
+  border: 1px solid var(--muted);
+  color: var(--text);
+}
+
+/* Layout */
+.dashboard-container {
+  max-width: 1200px;
+  margin: 24px auto;
+  padding: 0 20px;
+}
+.overview {
+  text-align: center;
+  background: var(--card);
+  padding: 28px;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+}
+.main-score {
+  font-size: 4rem;
+  font-weight: 700;
+  color: var(--danger);
+}
+.risk-label {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--muted);
+}
+.sub-metrics {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-top: 16px;
+  color: var(--muted);
+}
+.sub-metrics strong {
+  display: block;
+  color: var(--text);
+  font-size: 1.1rem;
+}
+
+/* Charts Grid */
+.charts-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  margin-top: 20px;
+}
+.chart-card {
+  background: var(--card);
+  padding: 16px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+.chart-card h3 {
+  margin-bottom: 12px;
+  color: var(--muted);
+}
+
+/* Rules Summary */
+.rules-summary {
+  margin-top: 24px;
+  background: var(--card);
+  padding: 16px;
+  border-radius: 10px;
+}
+.rule-stats {
+  display: flex;
+  justify-content: space-around;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+/* Controls */
+.controls {
+  margin: 20px 0;
+  display: flex;
+  justify-content: flex-start;
+  gap: 12px;
+  align-items: center;
+}
+#lastRefreshed {
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+/* Table */
+.table-section {
+  background: var(--card);
+  padding: 16px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+}
+.table-wrap {
+  overflow-x: auto;
+  margin-top: 12px;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  color: var(--text);
+}
+thead {
+  background: #111827;
+}
+th, td {
+  text-align: left;
+  padding: 10px 12px;
+}
+tbody tr:nth-child(odd) {
+  background: rgba(255,255,255,0.03);
+}
+tr.high td { color: var(--danger); }
+tr.suspicious td { color: var(--warn); }
+tr.safe td { color: var(--success); }

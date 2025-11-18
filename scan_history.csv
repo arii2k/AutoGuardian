@@ -1,0 +1,23 @@
+timestamp,email_id,sender,subject,score,risk_level,quarantine,community_alert
+2025-11-01T19:48:13.455640+00:00,19a3f8b5462248b5,"""Booking.com"" <noreply@booking.com>",Rate eee Hotel Graz,2,Safe,False,
+2025-11-01T19:48:14.423375+00:00,19a3bd78c1781fe5,"""zaposli.me"" <noreply@zaposli.me>",Novi poslovi na Zaposli.ME - 2025-10-31,2,Safe,False,
+2025-11-01T19:48:15.380841+00:00,19a3adfd1cde83b7,Benable Team <support@benable.com>,Your Halloween bonus!,2,Safe,False,
+2025-11-01T19:48:16.341857+00:00,19a3a660991c2a51,"""eID.GOV.ME"" <idp@mju.gov.me>",Dodavanje novog certifikata  | NSeID.ME,2,Safe,False,
+2025-11-01T19:48:17.295714+00:00,19a3a614a8291354,"""eID.GOV.ME"" <idp@mju.gov.me>","Registracija korisničkog računa | NSeID.ME
+",2,Safe,False,
+2025-11-01T19:48:18.239416+00:00,19a3a5d8b29455d9,"""eID.GOV.ME"" <idp@mju.gov.me>","Kreiranje korisničkog naloga  | NSeID.ME
+",2,Safe,False,
+2025-11-01T19:48:19.196007+00:00,19a3a1fe2656e233,Bitget <notification@promo1.bitget.com>,Newsletter: Fed jitters hit crypto—can BTC hold the line?,5,Suspicious,True,Known threat from community
+2025-11-01T19:48:20.134776+00:00,19a35f1ae99cd30c,Benable Team <support@benable.com>,🎉 A brand collab for you!,5,Suspicious,True,Known threat from community
+2025-11-01T19:48:21.067135+00:00,19a340833c163f6d,"""Booking.com"" <no-reply@properties.booking.com>",Today’s the last day you’ll be bookable on Booking.com,5,Suspicious,True,Known threat from community
+2025-11-01T19:48:21.999518+00:00,19a3289d03a79420,Google Takeout <noreply@google.com>,Your Google data is ready to download,5,Suspicious,True,Known threat from community
+2025-11-01T19:48:22.953024+00:00,19a3273076beadbd,Google <no-reply@accounts.google.com>,Archive of Google data requested,2,Safe,False,
+2025-11-01T19:48:23.922796+00:00,19a31134febe9fb2,"""zaposli.me"" <noreply@zaposli.me>",Novi poslovi na Zaposli.ME - 2025-10-29,0,Safe,False,
+2025-11-01T19:48:24.921956+00:00,19a3008c292caa8e,Banka Raiffeisen <news@sf.email.raiffeisen-kosovo.com>,Këshilla për Sigurinë tuaj Bankare nga Raiffeisen Bank Kosovo Mobile.,0,Safe,False,
+2025-11-01T19:48:26.022235+00:00,19a2c68a91d4b0dc,"""Booking.com"" <noreply@booking.com>",Rate eee Hotel Graz,5,Suspicious,True,Known threat from community
+2025-11-01T19:48:27.097409+00:00,19a2acb84d997b9b,Benable Team <support@benable.com>,💰 Bonus added to your account,0,Safe,False,
+2025-11-01T19:48:28.134066+00:00,19a2a79802c50808,eee Hotel Graz <graz@eee-hotel.at>,Rechnung GR11714,0,Safe,False,
+2025-11-01T19:48:29.168132+00:00,19a27fddbf210127,"""zaposli.me"" <noreply@zaposli.me>",Novi poslovi na Zaposli.ME - 2025-10-27,0,Safe,False,
+2025-11-01T19:48:30.226307+00:00,19a27a822a47ce9e,"""eee Hotel Graz via Booking.com"" <6796753886-xntd.ydde.qg3m.t9sh@property.booking.com>",Ihre Buchung im eee Hotel Graz,0,Safe,False,
+2025-11-01T19:48:31.264537+00:00,19a27a685383b1a2,"""eee Hotel Graz through Booking.com"" <noreply@booking.com>",You have a message from eee Hotel Graz,0,Safe,False,
+2025-11-01T19:48:32.274239+00:00,19a27996ed313122,"""Booking.com"" <noreply-payments@booking.com>",This is your receipt,0,Safe,False,

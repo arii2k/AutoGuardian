@@ -1,0 +1,44 @@
+[
+  {
+    "timestamp": "2025-10-19T23:32:41.602648",
+    "email": {
+      "Date": "Fri, 17 Oct 2025 08:04:53 -0600",
+      "From": "Banka Raiffeisen <news@sf.email.raiffeisen-kosovo.com>",
+      "Subject": "Raiffeisen Bank Kosovo Mobile: Shkarko versionin m\u00eb t\u00eb fundit!",
+      "id": "TEST_MEMORY"
+    },
+    "score": 2,
+    "matched_rules": [],
+    "memory_alert": "Novi poslovi na Zaposli.ME - 2025-10-17",
+    "community_alert": "Known threat from community",
+    "quarantine": true
+  },
+  {
+    "timestamp": "2025-10-19T23:32:41.621288",
+    "email": {
+      "Date": "Fri, 17 Oct 2025 18:27:08 +0200",
+      "From": "\"zaposli.me\" <noreply@zaposli.me>",
+      "Subject": "Novi poslovi na Zaposli.ME - 2025-10-17",
+      "id": "TEST_COMMUNITY"
+    },
+    "score": 2,
+    "matched_rules": [],
+    "memory_alert": "Novi poslovi na Zaposli.ME - 2025-10-17",
+    "community_alert": "Known threat from community",
+    "quarantine": true
+  },
+  {
+    "timestamp": "2025-10-19T23:32:41.636912",
+    "email": {
+      "Date": "Thu, 16 Oct 2025 18:19:45 GMT",
+      "From": "Google <no-reply@accounts.google.com>",
+      "Subject": "Your Google Account was recovered successfully",
+      "id": "TEST_HIGH"
+    },
+    "score": 2,
+    "matched_rules": [],
+    "memory_alert": "Novi poslovi na Zaposli.ME - 2025-10-17",
+    "community_alert": "Known threat from community",
+    "quarantine": true
+  }
+]

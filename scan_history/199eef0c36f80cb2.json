@@ -1,0 +1,15 @@
+{
+  "timestamp": "2025-10-17T12:21:54.353907",
+  "email": {
+    "Subject": "A new device is using your account",
+    "From": "TradingView <noreply@tradingview.com>",
+    "Date": "Thu, 16 Oct 2025 21:32:59 -0000",
+    "id": "199eef0c36f80cb2"
+  },
+  "score": 30,
+  "matched_rules": [
+    "Urgent language in subject",
+    "\u26a0 Similar to 176 known phishing attempts"
+  ],
+  "memory_alert": true
+}

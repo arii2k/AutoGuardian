@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>AutoGuardian Dashboard</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.3.0/dist/chart.umd.min.js"></script>
+</head>
+
+<body>
+<header class="nav">
+  <div class="brand">AutoGuardian</div>
+  <div class="nav-meta">
+    {% if user %}
+      <div class="user-info">
+        <span class="user-email">{{ user.email }}</span>
+        <span class="sub-status {% if paddle_sub and paddle_sub.active %}active{% else %}inactive{% endif %}">
+          {% if paddle_sub and paddle_sub.active %}Active — {{ paddle_sub.plan_id }}{% else %}Inactive{% endif %}
+        </span>
+        <a href="{{ url_for('auth.logout') }}" class="btn small">Logout</a>
+      </div>
+    {% else %}
+      <a href="{{ url_for('auth.login') }}" class="btn small">Login</a>
+    {% endif %}
+  </div>
+</header>
+
+<main class="dashboard-container">
+  <!-- === OVERVIEW === -->
+  <section class="overview">
+    <h2>AI Detection Overview</h2>
+    <div class="main-score" id="aiOverallScore">0</div>
+    <div class="risk-label" id="aiRiskLabel">–</div>
+    <div class="sub-metrics">
+      <span>Total Scans <strong id="totalScans">0</strong></span>
+      <span>High Risk (%) <strong id="highRiskPct">0%</strong></span>
+      <span>Quarantined <strong id="quarantineCount">0</strong></span>
+      <span>Cyber Threat Index <strong id="threatIndex">{{ threat_index or 0 }}</strong></span>
+    </div>
+  </section>
+
+  <!-- === CHARTS GRID === -->
+  <section class="charts-grid">
+    <div class="chart-card">
+      <h3>Risk Distribution</h3>
+      <canvas id="riskDonut"></canvas>
+    </div>
+    <div class="chart-card">
+      <h3>Scans Over Time</h3>
+      <canvas id="scansOverTime"></canvas>
+    </div>
+    <div class="chart-card">
+      <h3>Top Threats</h3>
+      <canvas id="topThreats"></canvas>
+    </div>
+  </section>
+
+  <section class="charts-grid">
+    <div class="chart-card">
+      <h3>Top Risky Senders</h3>
+      <canvas id="topSendersBar"></canvas>
+    </div>
+    <div class="chart-card">
+      <h3>Top Matched Rules</h3>
+      <canvas id="topRulesBar"></canvas>
+    </div>
+    <div class="chart-card">
+      <h3>High-Risk Trend Over Time</h3>
+      <canvas id="riskTrendLine"></canvas>
+    </div>
+  </section>
+
+  <!-- === RULES SUMMARY === -->
+  <section class="rules-summary">
+    <h3>Rules Source Summary</h3>
+    <div class="rule-stats">
+      <div><strong>OpenPhish:</strong> {{ last_rules_fetch.openphish.count if last_rules_fetch and last_rules_fetch.openphish else 0 }}</div>
+      <div><strong>URLhaus:</strong> {{ last_rules_fetch.urlhaus.count if last_rules_fetch and last_rules_fetch.urlhaus else 0 }}</div>
+      <div><strong>Total Rules:</strong> {{ last_rules_fetch.total_rules if last_rules_fetch else 0 }}</div>
+    </div>
+  </section>
+
+  <!-- === CONTROLS === -->
+  <section class="controls">
+    <div>
+      <button id="refreshBtn" class="btn">Rescan Now</button>
+      <span id="lastRefreshed"></span>
+      <a href="/collective.csv" class="btn outline small">Export Collective CSV</a>
+    </div>
+  </section>
+
+  <!-- === SCAN HISTORY === -->
+  <section class="table-section">
+    <h3>Scan History</h3>
+    <div class="table-wrap">
+      <table id="scanTable">
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Sender</th>
+            <th>Subject</th>
+            <th>Score</th>
+            <th>AI (Hybrid)</th>
+            <th>Community Alert</th>
+            <th>Quarantine</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for entry in scan_history %}
+          <tr data-score="{{ entry.score }}" class="{{ entry.risk_level|lower }}">
+            <td>{{ entry.timestamp }}</td>
+            <td>{{ entry.email_from }}</td>
+            <td>{{ entry.email_subject or '(no subject)' }}</td>
+            <td>{{ entry.score }}</td>
+            <td>{{ "%.2f"|format(entry.ai_details.hybrid_score) if entry.ai_details and entry.ai_details.hybrid_score is defined else '-' }}</td>
+            <td>{{ entry.community_alert or '' }}</td>
+            <td>{{ 'Yes' if entry.quarantine else 'No' }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <div id="dataBlobs" style="display:none;"
+       data-scan-history='{{ scan_history|tojson }}'
+       data-collective='{{ collective_stats|tojson }}'></div>
+</main>
+
+<script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Virtual environments
+env/
+venv/
+.venv/
+env312/
+venv312/
+
+# OS
+Thumbs.db
+.DS_Store
+
+# Credentials
+token.json
+credentials.json
+
+# Data (local)
+data/memory.json
+data/scan_history.json
+data/community_memory.json
+data/autoguardian.db
+data/*.pkl
+data/*.bin
+data/*.json
+
+# Logs
+logs/
+*.log
+
+# Node / React (frontend)
+frontend/node_modules/
+frontend/.parcel-cache/
+frontend/dist/
+
+# VS Code
+.vscode/

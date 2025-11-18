@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Affiliate — AutoGuardian</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}">
+  <style>
+    .card { background:#0b1220; border:1px solid #1e293b; border-radius:12px; padding:16px; color:#e5e7eb; margin-bottom:16px; }
+    .grid { display:grid; gap:16px; grid-template-columns: repeat(auto-fit, minmax(260px,1fr)); }
+    input.copy { width:100%; background:#0f172a; border:1px solid #334155; border-radius:8px; padding:10px; color:#e5e7eb; }
+    .btn { display:inline-block; padding:8px 12px; border-radius:8px; border:1px solid #334155; color:#e5e7eb; text-decoration:none; background:#1f2937; }
+    .btn:hover { background:#334155; }
+    table { width:100%; border-collapse:collapse; }
+    th, td { padding:8px 10px; border-bottom:1px solid #1e293b; font-size:14px; }
+    th { text-align:left; color:#94a3b8; }
+  </style>
+</head>
+<body>
+<header class="nav">
+  <div class="nav-left">
+    <h1 class="brand">Affiliate</h1>
+    <nav class="breadcrumb">
+      <a href="{{ url_for('dashboard') }}">← Back to Dashboard</a>
+    </nav>
+  </div>
+</header>
+
+<main class="container">
+  <section class="grid">
+    <div class="card">
+      <h3>Your Referral Link</h3>
+      <p style="font-size:13px;color:#94a3b8;">Share this link. New signups will credit your account.</p>
+      <input id="refLink" class="copy" value="{{ referral_link }}" readonly />
+      <div style="margin-top:8px;">
+        <button class="btn" onclick="copyLink()">Copy</button>
+      </div>
+    </div>
+    <div class="card">
+      <h3>Stats</h3>
+      <div style="font-size:32px;font-weight:800;color:#93c5fd;">{{ referral_count }}</div>
+      <div class="muted">Total referrals</div>
+      <div style="margin-top:10px;font-size:13px;color:#94a3b8;">Your code: <strong>{{ ref_code }}</strong></div>
+      <div style="margin-top:2px;font-size:13px;color:#94a3b8;">Logged in as: <strong>{{ user_email }}</strong></div>
+    </div>
+  </section>
+
+  <section class="card">
+    <h3>Leaderboard</h3>
+    <table>
+      <thead><tr><th>Email</th><th>Referrals</th></tr></thead>
+      <tbody>
+        {% for row in leaderboard %}
+        <tr><td>{{ row.email }}</td><td>{{ row.referrals }}</td></tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </section>
+
+  <section class="card">
+    <h3>Your Referrals</h3>
+    <table>
+      <thead><tr><th>Email</th><th>When</th></tr></thead>
+      <tbody>
+        {% for r in referred_list %}
+        <tr><td>{{ r.email }}</td><td>{{ r.when }}</td></tr>
+        {% else %}
+        <tr><td colspan="2" style="color:#94a3b8;">No referrals yet.</td></tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </section>
+</main>
+
+<script>
+  function copyLink(){
+    const el = document.getElementById('refLink');
+    el.select(); el.setSelectionRange(0, 99999);
+    try { document.execCommand('copy'); } catch(e){}
+  }
+</script>
+</body>
+</html>
