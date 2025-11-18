@@ -12,7 +12,6 @@ cryptography==42.0.8
 gunicorn==21.2.0
 reportlab==4.2.2
 
-# TORCH stack for Python 3.13 — use CPU wheels only
+# PyTorch stack (Python 3.13 compatible)
 torch==2.5.1
-torchvision==0.22.1
-torchaudio==2.5.1
+torchvision==0.21.0
