@@ -1,24 +1,18 @@
 Flask==3.1.2
 Flask-SQLAlchemy==3.0.5
 flask-cors==4.0.0
-
 python-dotenv==1.0.1
-
 requests==2.32.3
-
 pandas==2.2.3
 numpy==2.1.2
-
 google-api-python-client==2.97.0
 google-auth==2.34.0
 google-auth-oauthlib==1.2.0
-
 cryptography==42.0.8
-
+gunicorn==21.2.0
 reportlab==4.2.2
 
+# TORCH stack for Python 3.13 — use CPU wheels only
 torch==2.5.1
-torchvision==0.20.1
+torchvision==0.22.1
 torchaudio==2.5.1
-
-gunicorn==21.2.0
